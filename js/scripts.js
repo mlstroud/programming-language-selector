@@ -1,4 +1,9 @@
 // Business Logic
+var csharp = 0;
+var jscript = 0;
+var swift = 0;
+var python = 0;
+
 function getQuestion(questionNumber, questionBranch) {
   if (questionNumber === 1) {
     return "What are you wanting to do?";
@@ -22,7 +27,7 @@ function getQuestion(questionNumber, questionBranch) {
 
 function getQuestionAnswers(questionNumber) {
   if (questionNumber === 1){
-    var answers = ["Make a game", "Create a website", "Make an app", "Analyse data", "Learn programming"];
+    var answers = ["Make a game", "Create a website", "Make an app", "Make a server", "Learn programming"];
   }
   else if (questionNumber === 2) {
     var answers = ["2One", "2Two", "2Three", "2Four"];
@@ -64,7 +69,18 @@ function getRadioValues(questionNumber) {
   }
 
   return values;
-}
+};
+
+function notSelected(questionNumber) {
+    var selection = $("input[name='question-" + questionNumber + "']:checked").val();
+
+    if (!selection) {
+      return true;
+    }
+    else {
+      return false;
+    }
+};
 
 // User Interface Logic
 $(document).ready(function() {
@@ -100,33 +116,40 @@ $(document).ready(function() {
 
   // User Answers First Question
   $("#form-question-1").submit(function(event) {
-
-    var question = getQuestion(2,0);
-    var answers = getQuestionAnswers(2);
-    var values = getRadioValues(2);
-    var i;
-
-    $("#question-2-title").text(question);
-
-    for(i = 0; i < answers.length; i++) {
-      $("#question-2-list").append(
-        "<div class=\"radio\"" +
-          "<label>" +
-            "<li>" +
-              "<input type=\"radio\" name=\"question-2\" value=\"" + values[i] + "\">" +
-              answers[i] + 
-            "</li>" +
-          "</label>" +
-        "</div>");
+    
+    if(notSelected(1)) {
+      alert("Please choose an option before confirming.");
     }
+    else {
+      var question = getQuestion(2,0);
+      var answers = getQuestionAnswers(2);
+      var values = getRadioValues(2);
+      var previousAnswer = $()
+      var i;
+  
+      $("#question-2-title").text(question);
+  
+      for(i = 0; i < answers.length; i++) {
+        $("#question-2-list").append(
+          "<div class=\"radio\"" +
+            "<label>" +
+              "<li>" +
+                "<input type=\"radio\" name=\"question-2\" value=\"" + values[i] + "\">" +
+                answers[i] + 
+              "</li>" +
+            "</label>" +
+          "</div>");
+      }
 
-    $("#question-1").fadeOut('slow', function() {
-      $("#question-2").fadeIn('slow');
-    });
+      $("#question-1").fadeOut('slow', function() {
+        $("#question-2").fadeIn('slow');
+      });
+    }
 
     event.preventDefault();
   });
 
+// User Answers Second Question
   $("#form-question-2").submit(function(event) {
 
     var question = getQuestion(3, 0);
@@ -154,6 +177,7 @@ $(document).ready(function() {
     event.preventDefault();
   });
 
+  // User Answers Third Question
   $("#form-question-3").submit(function(event) {
 
     var question = getQuestion(4, 0);
@@ -181,6 +205,7 @@ $(document).ready(function() {
     event.preventDefault();
   });
 
+  // User Answers Foruth Question
   $("#form-question-4").submit(function(event) {
 
     var question = getQuestion(5, 0);
@@ -208,7 +233,11 @@ $(document).ready(function() {
     event.preventDefault();
   });
 
+  // User Answers Fifth Question, Display Results
   $("#form-question-5").submit(function(event) {
+
+    $("#result-language").text("Python");
+
     $("#question-5").fadeOut('slow', function() {
       $("#result").fadeIn('slow');
     });
@@ -216,7 +245,9 @@ $(document).ready(function() {
     event.preventDefault();
   });
 
+  // Restart the quiz
   $("#form-restart").submit(function(event) {
+
     $("#result").fadeOut('slow', function() {
       $("#question-1").fadeIn('slow');
     });
