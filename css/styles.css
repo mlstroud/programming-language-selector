@@ -1,14 +1,9 @@
-.body {
-  background-color: #212529;
-}
-
 .jumbotron {
   text-align: center;
   background: white;
 }
 
 .container {
-  min-height: 100%;
   width: 75%;
   padding-bottom: 20px;
 }
@@ -16,6 +11,7 @@
 
 .panel {
   background-color: white;
+  padding-left: 100px;
   padding: 20px;
 }
 
@@ -56,6 +52,7 @@
 }
 
 ul {
+  padding-left: 20%;
   list-style-type: none;
   list-style-position: inside;
   text-align: center;

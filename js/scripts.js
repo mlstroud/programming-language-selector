@@ -107,10 +107,11 @@ function updateLanguages(languageType) {
     languageList[4]++;
   }
   else if (languageType === "backend") {
-    languageList[0];
-    languageList[2];
-    languageList[3];
-    languageList[4];
+    languageList[0]++;
+    languageList[1]++;
+    languageList[2]++;
+    languageList[3]++;
+    languageList[4]++;
   }
   else if (languageType === "apps") {
     languageList[3]++;
@@ -163,32 +164,38 @@ function getResult() {
   // [0]C# [1]C++ [2]Python [3]JavaScript [4]Ruby [5]Swift
   if(maxIndex === 0){
     result[0] = "C#";
-    result[1] = "Based on your answers, a good language to consider could be C#.";
+    result[1] = "Based on your answers, a good language to consider could be C#. It is a general-purpose language that is used primarily on windows. " +
+      "It is a higher level language making it easier to learn than its older brother, C++.";
     result[2] = "<img src=\"./img/csharp.png\" alt=\"A picture of a C# icon.\">";
   }
   else if (maxIndex === 1) {
     result[0] = "C++";
-    result[1] = "Based on your answers, a good language to consider could be C++.";
+    result[1] = "Based on your answers, a good language to consider could be C++. It is a low level language that is a top pick when performance is " +
+      "one of the major priorities for your code. It may be a little more difficult to learn as a beginner, but provides the most control out of the group.";
     result[2] = "<img src=\"./img/cplusplus.png\" alt=\"A picture of a C++ icon.\">";
   }
   else if (maxIndex === 2) {
     result[0] = "Python";
-    result[1] = "Based on your answers, a good language to consider could be Python.";
+    result[1] = "Based on your answers, a good language to consider could be Python. It is great for beginners due to its simple syntax, and is also " +
+      "a staple in academia for research, analytics, and machine learning.";
     result[2] = "<img src=\"./img/python.png\" alt=\"A picture of a Python icon.\">";
   }
   else if (maxIndex === 3) {
     result[0] = "JavaScript";
-    result[1] = "Based on your answers, a good language to consider could be JavaScript.";
+    result[1] = "Based on your answers, a good language to consider could be JavaScript. The de facto programming language for web development, it has " +
+     "much to offer. Supported by a ton of popular libraries, you can do both front and back-end development with it.";
     result[2] = "<img src=\"./img/javascript.png\" alt=\"A picture of a JavaScript icon.\">";
   }
   else if (maxIndex === 4) {
     result[0] = "Ruby";
-    result[1] = "Based on your answers, a good language to consider could be Ruby.";
+    result[1] = "Based on your answers, a good language to consider could be Ruby. Not always as popular as its counterparts, Ruby is still a great " +
+      "choice for web applications. With the popular Ruby on Rails framework, you can build some amazing websites.";
     result[2] = "<img src=\"./img/ruby.png\" alt=\"A picture of a Ruby icon.\">";
   }
   else if (maxIndex === 5) {
     result[0] = "Swift";
-    result[1] = "Based on your answers, a good language to consider could be Swift.";
+    result[1] = "Based on your answers, a good language to consider could be Swift. Swift is one of the backbones of Apple. This language is used to develop " +
+      "for everything from their phones to their watches. It is a powerful language to consider if your main focus is creating mobile apps.";
     result[2] = "<img src=\"./img/swift.png\" alt=\"A picture of a Swift icon.\">";
   }
   else {
@@ -399,10 +406,11 @@ $(document).ready(function() {
   });
 
   // Restart the quiz
+  
   $("#form-restart").submit(function(event) {
 
-    $("#result").fadeOut('slow', function() {
-      $("#question-1").fadeIn('slow');
+    $(document).fadeOut('slow', function() {
+      location.reload();
     });
 
     event.preventDefault();
