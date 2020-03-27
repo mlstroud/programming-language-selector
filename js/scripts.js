@@ -1,32 +1,53 @@
 // Business Logic
-function getQuestion(questionNumber) {
-  if(questionNumber === 1){
+function getQuestion(questionNumber, questionBranch) {
+  if(questionNumber === 1) {
     return "What are you wanting to create?";
+  }
+  else if(questionNumber ===2) {
+    return "Test Question 2";
   }
 };
 
-function getQuestionOneAnswers() {
-  answers = ["One", "Two", "Three", "Four"];
+function getQuestionAnswers(questionNumber) {
+  if (questionNumber === 1){
+    var answers = ["1One", "1Two", "1Three", "1Four"];
+  }
+  else if (questionNumber === 2) {
+    var answers = ["2One", "2Two", "2Three", "2Four"];
+  }
+  else if (questionNumber === 3) {
+    var answers = ["3One", "3Two", "3Three", "3Four"];
+  }
+  else if (questionNumber === 4) {
+    var answers = ["4One", "4Two", "4Three", "4Four"];
+  }
+  else if (questionNumber === 5) {
+    var answers = ["5One", "5Two", "5Three", "5Four"];
+  }
+
   return answers;
 };
-
 
 // User Interface Logic
 $(document).ready(function() {
 
+  // User Starts Quiz
   $("#start-form").submit(function(event) {
 
-    var question = getQuestion(1);
-    var answers = getQuestionOneAnswers();
+    var question = getQuestion(1, 0);
+    var answers = getQuestionAnswers(1);
     var i;
 
-    $("#question-title").text(question);
+    $("#question-1-title").text(question);
+
     for(i = 0; i < answers.length; i++) {
       $("#question-1-list").append(
         "<div class=\"radio\"" +
           "<label>" +
-            "<li><input type=\"radio\" name=\"question-1\" value=\"test\">" +
-             answers[i] + "</li>" +
+            "<li>" +
+              "<input type=\"radio\" name=\"question-1\" value=\"test\">" +
+              answers[i] + 
+            "</li>" +
           "</label>" +
         "</div>");
     }
@@ -38,7 +59,27 @@ $(document).ready(function() {
     event.preventDefault();
   });
 
+  // User Answers First Question
   $("#form-question-1").submit(function(event) {
+
+    var question = getQuestion(2,0);
+    var answers = getQuestionAnswers(2);
+    var i;
+
+    $("#question-2-title").text(question);
+
+    for(i = 0; i < answers.length; i++) {
+      $("#question-2-list").append(
+        "<div class=\"radio\"" +
+          "<label>" +
+            "<li>" +
+              "<input type=\"radio\" name=\"question-2\" value=\"test\">" +
+              answers[i] + 
+            "</li>" +
+          "</label>" +
+        "</div>");
+    }
+
     $("#question-1").fadeOut('slow', function() {
       $("#question-2").fadeIn('slow');
     });

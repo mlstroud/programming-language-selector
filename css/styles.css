@@ -30,12 +30,19 @@
   display: none;
 }
 
+.answer-box {
+  
+  margin: 0 auto;
+}
+
 ul {
   list-style-type: none;
+  list-style-position: inside;
   text-align: center;
   margin-left: 50px;
 }
 
 li {
   padding: 5px;
+  text-align: left;
 }
