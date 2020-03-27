@@ -1,10 +1,7 @@
 // Business Logic
-var csharp = 0;
-var jscript = 0;
-var swift = 0;
-var ruby = 0;
-var cplusplus = 0;
-var python = 0;
+
+// [0]C# [1]C++ [2]P [3]JS [4]RUB [5]SWIFT
+var languageList = [0, 0, 0, 0, 0, 0];
 
 function getQuestion(questionNumber) {
   if (questionNumber === 1) {
@@ -74,27 +71,29 @@ function getRadioValues(questionNumber) {
 };
 
 function updateLanguages(languageType) {
+
+  // [0]C# [1]C++ [2]P [3]JS [4]RUB [5]SWIFT
   if(languageType === "python") {
-    python++;
+    languageList[2]++;
   }
   else if (languageType === "csharp") {
-    csharp++;
+    languageList[0]++;
   }
   else if (languageType === "cplusplus") {
-    cplusplus++;
+    languageList[1]++;
   }
   else if (languageType === "swift") {
-    swift++;
+    languageList[5]++;
   }
   else if (languageType === "ruby") {
-    swift++;
+    languageList[4]++;
   }
   else if (languageType === "jscript") {
-    jscript++;
+    languageList[3]++;
   }
   else if (languageType === "web") {
-    jscript++;
-    ruby++;
+    languageList[3]++;
+    languageList[4]++;
   }
 }
 
@@ -108,6 +107,44 @@ function notSelected(questionNumber) {
       return false;
     }
 };
+
+function getResult() {
+  var i;
+  var max = 0;
+  var result = ["", ""];
+
+  for(i = 0; i < languageList.length; i++) {
+    if (languageList[i] > max) {
+      max = i;
+    }
+  }
+
+  // [0]C# [1]C++ [2]P [3]JS [4]RUB [5]SWIFT
+  if(max === 0){
+    result[0] = "C#";
+    result[1] = "Based on your answers, a good language to consider could be C#.";
+  }
+  else if (1) {
+    result[0] = "C++";
+    result[1] = "Based on your answers, a good language to consider could be C++.";
+  }
+  else if (2) {
+    result[0] = "Python";
+    result[1] = "Based on your answers, a good language to consider could be Python.";
+  }
+  else if (3) {
+    result[0] = "JavaScript";
+    result[1] = "Based on your answers, a good language to consider could be JavaScript.";
+  }
+  else if (4) {
+    result[0] = "Ruby";
+    result[1] = "Based on your answers, a good language to consider could be Ruby.";
+  }
+  else if (5) {
+    result[0] = "Swift";
+    result[1] = "Based on your answers, a good language to consider could be Swift.";
+  }
+}
 
 // User Interface Logic
 $(document).ready(function() {
