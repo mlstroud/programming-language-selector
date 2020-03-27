@@ -163,17 +163,17 @@ function getResult() {
   if(maxIndex === 0){
     result[0] = "C#";
     result[1] = "Based on your answers, a good language to consider could be C#.";
-    result[2] = "<img src=\"./img/javascript.png\" alt=\"A picture of a JavaScript icon.\">";
+    result[2] = "<img src=\"./img/csharp.png\" alt=\"A picture of a C# icon.\">";
   }
   else if (maxIndex === 1) {
     result[0] = "C++";
     result[1] = "Based on your answers, a good language to consider could be C++.";
-    result[2] = "<img src=\"./img/javascript.png\" alt=\"A picture of a JavaScript icon.\">";
+    result[2] = "<img src=\"./img/cplusplus.png\" alt=\"A picture of a C++ icon.\">";
   }
   else if (maxIndex === 2) {
     result[0] = "Python";
     result[1] = "Based on your answers, a good language to consider could be Python.";
-    result[2] = "<img src=\"./img/javascript.png\" alt=\"A picture of a JavaScript icon.\">";
+    result[2] = "<img src=\"./img/python.png\" alt=\"A picture of a Python icon.\">";
   }
   else if (maxIndex === 3) {
     result[0] = "JavaScript";
@@ -183,17 +183,17 @@ function getResult() {
   else if (maxIndex === 4) {
     result[0] = "Ruby";
     result[1] = "Based on your answers, a good language to consider could be Ruby.";
-    result[2] = "<img src=\"./img/javascript.png\" alt=\"A picture of a JavaScript icon.\">";
+    result[2] = "<img src=\"./img/ruby.png\" alt=\"A picture of a Ruby icon.\">";
   }
   else if (maxIndex === 5) {
     result[0] = "Swift";
     result[1] = "Based on your answers, a good language to consider could be Swift.";
-    result[2] = "<img src=\"./img/javascript.png\" alt=\"A picture of a JavaScript icon.\">";
+    result[2] = "<img src=\"./img/swift.png\" alt=\"A picture of a Swift icon.\">";
   }
   else {
     result[0] = "Error";
     result[1] = "There was an error in determining your result.";
-    result[2] = "<img src=\"./img/javascript.png\" alt=\"A picture of a JavaScript icon.\">";
+    result[2] = "<img src=\"./img/error.png\" alt=\"A large red X icon.\">";
   }
 
   return result;
