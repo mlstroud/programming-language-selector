@@ -1,6 +1,6 @@
 // Business Logic
 
-// [0]C# [1]C++ [2]P [3]JS [4]RUB [5]SWIFT
+// [0]C# [1]C++ [2]Python [3]JavaScript [4]Ruby [5]Swift
 var languageList = [0, 0, 0, 0, 0, 0];
 
 function getQuestion(questionNumber) {
@@ -14,7 +14,7 @@ function getQuestion(questionNumber) {
     return "How do you feel about syntax?";
   }
   else if (questionNumber === 4) {
-    return "Test Question 4";
+    return "What type of language are you wanting to try?";
   }
   else if (questionNumber === 5) {
     return "Choose your difficulty: ";
@@ -35,7 +35,7 @@ function getQuestionAnswers(questionNumber) {
     var answers = ["I prefer strongly typed and strict syntax.", "Uhh...normal?", "I'd prefer something simple."];
   }
   else if (questionNumber === 4) {
-    var answers = ["4One", "4Two", "4Three", "4Four"];
+    var answers = ["Whatever gives me the most control.", "Something trendy.", "One that is easy to use.", "No preference."];
   }
   else if (questionNumber === 5) {
     var answers = ["Easy", "Normal", "Hard", "Brutal"];
@@ -60,7 +60,7 @@ function getRadioValues(questionNumber) {
     var values = ["cplusplus", "normal", "python"];
   }
   else if (questionNumber === 4) {
-    var values = ["csharp", "jscript", "swift", "cplusplus"];
+    var values = ["cplusplus", "trendy", "easy", "all"];
   }
   else if (questionNumber === 5) {
     var values = ["python", "apps", "csharp", "cplusplus"];
@@ -74,7 +74,7 @@ function getRadioValues(questionNumber) {
 
 function updateLanguages(languageType) {
 
-  // [0]C# [1]C++ [2]P [3]JS [4]RUB [5]SWIFT
+  // [0]C# [1]C++ [2]Python [3]JavaScript [4]Ruby [5]Swift
   if(languageType === "python") {
     languageList[2]++;
   }
@@ -97,6 +97,14 @@ function updateLanguages(languageType) {
     languageList[3]++;
     languageList[4]++;
   }
+  else if (languageType === "trendy") {
+    languageList[2]++;
+    languageList[4]++;
+    languageList[5]++;
+  }
+  else if (languageType === "easy") {
+    languageList[2]++;
+  }
   else if (languageType === "backend") {
     languageList[0];
     languageList[2];
@@ -115,7 +123,7 @@ function updateLanguages(languageType) {
       languageList[i]++;
     }
   }
-  else if (type === "normal") {
+  else if (languageType === "normal") {
     languageList[0]++;
     languageList[3]++;
     languageList[4]++;
@@ -141,7 +149,7 @@ function getResult() {
   var i;
   var max = 0;
   var maxIndex = 0;
-  var result = ["", ""];
+  var result = ["", "", ""];
 
   for(i = 0; i < languageList.length; i++) {
     if (languageList[i] > max) {
@@ -151,34 +159,41 @@ function getResult() {
     console.log("Max: " + max + " Max Index: " + maxIndex);
   }
 
-  // [0]C# [1]C++ [2]P [3]JS [4]RUB [5]SWIFT
+  // [0]C# [1]C++ [2]Python [3]JavaScript [4]Ruby [5]Swift
   if(maxIndex === 0){
     result[0] = "C#";
     result[1] = "Based on your answers, a good language to consider could be C#.";
+    result[2] = "<img src=\"./img/javascript.png\" alt=\"A picture of a JavaScript icon.\">";
   }
   else if (maxIndex === 1) {
     result[0] = "C++";
     result[1] = "Based on your answers, a good language to consider could be C++.";
+    result[2] = "<img src=\"./img/javascript.png\" alt=\"A picture of a JavaScript icon.\">";
   }
   else if (maxIndex === 2) {
     result[0] = "Python";
     result[1] = "Based on your answers, a good language to consider could be Python.";
+    result[2] = "<img src=\"./img/javascript.png\" alt=\"A picture of a JavaScript icon.\">";
   }
   else if (maxIndex === 3) {
     result[0] = "JavaScript";
     result[1] = "Based on your answers, a good language to consider could be JavaScript.";
+    result[2] = "<img src=\"./img/javascript.png\" alt=\"A picture of a JavaScript icon.\">";
   }
   else if (maxIndex === 4) {
     result[0] = "Ruby";
     result[1] = "Based on your answers, a good language to consider could be Ruby.";
+    result[2] = "<img src=\"./img/javascript.png\" alt=\"A picture of a JavaScript icon.\">";
   }
   else if (maxIndex === 5) {
     result[0] = "Swift";
     result[1] = "Based on your answers, a good language to consider could be Swift.";
+    result[2] = "<img src=\"./img/javascript.png\" alt=\"A picture of a JavaScript icon.\">";
   }
   else {
     result[0] = "Error";
     result[1] = "There was an error in determining your result.";
+    result[2] = "<img src=\"./img/javascript.png\" alt=\"A picture of a JavaScript icon.\">";
   }
 
   return result;
@@ -264,7 +279,6 @@ $(document).ready(function() {
       var values = getRadioValues(3);
       var previousAnswer = $("input[name=question-2]:checked").val();
       updateLanguages(previousAnswer);
-      console.log(previousAnswer);
       var i;
   
       $("#question-3-title").text(question);
@@ -300,7 +314,6 @@ $(document).ready(function() {
       var values = getRadioValues(4);
       var previousAnswer = $("input[name=question-3]:checked").val();
       updateLanguages(previousAnswer);
-      console.log(previousAnswer);
       var i;
   
       $("#question-4-title").text(question);
@@ -336,7 +349,6 @@ $(document).ready(function() {
       var values = getRadioValues(5);
       var previousAnswer = $("input[name=question-4]:checked").val();
       updateLanguages(previousAnswer);
-      console.log(previousAnswer);
       var i;
   
       $("#question-5-title").text(question);
@@ -369,11 +381,11 @@ $(document).ready(function() {
     else {
       var previousAnswer = $("input[name=question-5]:checked").val();
       updateLanguages(previousAnswer);
-      console.log(previousAnswer);
       var result = getResult();
 
       $("#result-language").text(result[0]);
       $("#result-text").text(result[1]);
+      $("#result-img").append(result[2]);
 
       $("#question-5").fadeOut('slow', function() {
         $("#result").fadeIn('slow');
@@ -386,11 +398,11 @@ $(document).ready(function() {
   // Restart the quiz
   $("#form-restart").submit(function(event) {
 
-    // $("#form-question-1").reset();
-    // $("#form-question-2").reset();
-    // $("#form-question-3").reset();
-    // $("#form-question-4").reset();
-    // $("#form-question-5").reset();
+    $("#form-question-1").reset();
+    $("#form-question-2").reset();
+    $("#form-question-3").reset();
+    $("#form-question-4").reset();
+    $("#form-question-5").reset();
 
     $("#result").fadeOut('slow', function() {
       $("#question-1").fadeIn('slow');
