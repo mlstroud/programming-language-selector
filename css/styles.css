@@ -1,3 +1,7 @@
+.body {
+  background-color: #EEEEEE !important;
+}
+
 .jumbotron {
   text-align: center;
   background: white;
@@ -7,7 +11,6 @@
   width: 75%;
   padding-bottom: 20px;
 }
-
 
 .panel {
   background-color: white;
@@ -84,7 +87,7 @@ img {
 
 .emphasis {
   color: skyblue;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 #footer-image {
