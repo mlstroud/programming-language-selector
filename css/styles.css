@@ -29,3 +29,13 @@
 #result {
   display: none;
 }
+
+ul {
+  list-style-type: none;
+  text-align: center;
+  margin-left: 50px;
+}
+
+li {
+  padding: 5px;
+}

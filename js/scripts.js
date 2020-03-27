@@ -1,7 +1,35 @@
+// Business Logic
+function getQuestion(questionNumber) {
+  if(questionNumber === 1){
+    return "What are you wanting to create?";
+  }
+};
 
+function getQuestionOneAnswers() {
+  answers = ["One", "Two", "Three", "Four"];
+  return answers;
+};
+
+
+// User Interface Logic
 $(document).ready(function() {
 
   $("#start-form").submit(function(event) {
+
+    var question = getQuestion(1);
+    var answers = getQuestionOneAnswers();
+    var i;
+
+    $("#question-title").text(question);
+    for(i = 0; i < answers.length; i++) {
+      $("#question-1-list").append(
+        "<div class=\"radio\"" +
+          "<label>" +
+            "<li><input type=\"radio\" name=\"question-1\" value=\"test\">" +
+             answers[i] + "</li>" +
+          "</label>" +
+        "</div>");
+    }
 
     $("#start-quiz").fadeOut('slow', function() {
       $("#question-1").fadeIn('slow');
