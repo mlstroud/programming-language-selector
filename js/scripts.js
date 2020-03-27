@@ -41,4 +41,20 @@ $(document).ready(function() {
 
     event.preventDefault();
   });
+
+  $("#form-question-5").submit(function(event) {
+    $("#question-5").fadeOut('slow', function() {
+      $("#result").fadeIn('slow');
+    });
+
+    event.preventDefault();
+  });
+
+  $("#form-restart").submit(function(event) {
+    $("#result").fadeOut('slow', function() {
+      $("#question-1").fadeIn('slow');
+    });
+
+    event.preventDefault();
+  });
 });
