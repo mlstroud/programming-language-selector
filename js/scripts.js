@@ -410,6 +410,11 @@ $(document).ready(function() {
   $("#form-restart").submit(function(event) {
 
     $(document).fadeOut('slow', function() {
+      $("#form-question-1").reset();
+      $("#form-question-2").reset();
+      $("#form-question-3").reset();
+      $("#form-question-4").reset();
+      $("#form-question-5").reset();
       location.reload();
     });
 
