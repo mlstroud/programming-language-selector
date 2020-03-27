@@ -48,20 +48,22 @@ function getQuestionAnswers(questionNumber) {
 };
 
 function getRadioValues(questionNumber) {
+  // web = JavaScript + Ruby + C#
+  // Apps = JavaScript + Ruby + Swift
   if (questionNumber === 1) {
-    var values = ["csharp", "jscript", "swift", "cplusplus", "python"];
+    var values = ["csharp", "jscript", "apps", "all"];
   }
   else if (questionNumber === 2) {
-    var values = ["C#", "JavaScript", "Ruby", "Python", "Python"];
+    var values = ["jscript", "web", "python", "python"];
   }
   else if (questionNumber === 3) {
-    var values = ["C#", "JavaScript", "Ruby", "Python", "Python"];
+    var values = ["csharp", "jscript", "swift", "cplusplus"];
   }
   else if (questionNumber === 4) {
-    var values = ["C#", "JavaScript", "Ruby", "Python", "Python"];
+    var values = ["csharp", "jscript", "swift", "cplusplus"];
   }
   else if (questionNumber === 5) {
-    var values = ["python", "web", "csharp", "cplusplus"];
+    var values = ["python", "apps", "csharp", "cplusplus"];
   }
   else {
     var values = null;
@@ -95,6 +97,18 @@ function updateLanguages(languageType) {
     languageList[3]++;
     languageList[4]++;
   }
+  else if (languageType === "apps") {
+    languageList[3]++;
+    languageList[4]++;
+    languageList[5]++;
+  }
+  else if (type === "all") {
+    var i;
+
+    for (i = 0; i < languageList.length; i++) {
+      languageList[i]++;
+    }
+  }
 }
 
 function notSelected(questionNumber) {
@@ -124,26 +138,28 @@ function getResult() {
     result[0] = "C#";
     result[1] = "Based on your answers, a good language to consider could be C#.";
   }
-  else if (1) {
+  else if (max === 1) {
     result[0] = "C++";
     result[1] = "Based on your answers, a good language to consider could be C++.";
   }
-  else if (2) {
+  else if (max === 2) {
     result[0] = "Python";
     result[1] = "Based on your answers, a good language to consider could be Python.";
   }
-  else if (3) {
+  else if (max === 3) {
     result[0] = "JavaScript";
     result[1] = "Based on your answers, a good language to consider could be JavaScript.";
   }
-  else if (4) {
+  else if (max === 4) {
     result[0] = "Ruby";
     result[1] = "Based on your answers, a good language to consider could be Ruby.";
   }
-  else if (5) {
+  else if (max === 5) {
     result[0] = "Swift";
     result[1] = "Based on your answers, a good language to consider could be Swift.";
   }
+
+  return result;
 }
 
 // User Interface Logic
@@ -188,7 +204,8 @@ $(document).ready(function() {
       var question = getQuestion(2);
       var answers = getQuestionAnswers(2);
       var values = getRadioValues(2);
-      var previousAnswer = $();
+      var previousAnswer = $("input[name=question-1]:checked").val();
+      updateLanguages(previousAnswer);
       var i;
   
       $("#question-2-title").text(question);
@@ -223,6 +240,8 @@ $(document).ready(function() {
       var question = getQuestion(3);
       var answers = getQuestionAnswers(3);
       var values = getRadioValues(3);
+      var previousAnswer = $("input[name=question-2]:checked").val();
+      updateLanguages(previousAnswer);
       var i;
   
       $("#question-3-title").text(question);
@@ -256,6 +275,8 @@ $(document).ready(function() {
       var question = getQuestion(4);
       var answers = getQuestionAnswers(4);
       var values = getRadioValues(4);
+      var previousAnswer = $("input[name=question-3]:checked").val();
+      updateLanguages(previousAnswer);
       var i;
   
       $("#question-4-title").text(question);
@@ -289,6 +310,8 @@ $(document).ready(function() {
       var question = getQuestion(5);
       var answers = getQuestionAnswers(5);
       var values = getRadioValues(5);
+      var previousAnswer = $("input[name=question-4]:checked").val();
+      updateLanguages(previousAnswer);
       var i;
   
       $("#question-5-title").text(question);
@@ -319,7 +342,12 @@ $(document).ready(function() {
       alert("Please choose an option before confirming.");
     }
     else {
-      $("#result-language").text("Python");
+      var previousAnswer = $("input[name=question-5]:checked").val();
+      updateLanguages(previousAnswer);
+      var result = getResult();
+
+      $("#result-language").text(result[0]);
+      $("#result-text").text(result[1]);
 
       $("#question-5").fadeOut('slow', function() {
         $("#result").fadeIn('slow');
