@@ -109,6 +109,9 @@ function updateLanguages(languageType) {
       languageList[i]++;
     }
   }
+  else {
+
+  }
 }
 
 function notSelected(questionNumber) {
@@ -125,38 +128,45 @@ function notSelected(questionNumber) {
 function getResult() {
   var i;
   var max = 0;
+  var maxIndex = 0;
   var result = ["", ""];
 
   for(i = 0; i < languageList.length; i++) {
     if (languageList[i] > max) {
-      max = i;
+      max = languageList[i];
+      maxIndex = i;
     }
+    console.log("Max: " + max + " Max Index: " + maxIndex);
   }
 
   // [0]C# [1]C++ [2]P [3]JS [4]RUB [5]SWIFT
-  if(max === 0){
+  if(maxIndex === 0){
     result[0] = "C#";
     result[1] = "Based on your answers, a good language to consider could be C#.";
   }
-  else if (max === 1) {
+  else if (maxIndex === 1) {
     result[0] = "C++";
     result[1] = "Based on your answers, a good language to consider could be C++.";
   }
-  else if (max === 2) {
+  else if (maxIndex === 2) {
     result[0] = "Python";
     result[1] = "Based on your answers, a good language to consider could be Python.";
   }
-  else if (max === 3) {
+  else if (maxIndex === 3) {
     result[0] = "JavaScript";
     result[1] = "Based on your answers, a good language to consider could be JavaScript.";
   }
-  else if (max === 4) {
+  else if (maxIndex === 4) {
     result[0] = "Ruby";
     result[1] = "Based on your answers, a good language to consider could be Ruby.";
   }
-  else if (max === 5) {
+  else if (maxIndex === 5) {
     result[0] = "Swift";
     result[1] = "Based on your answers, a good language to consider could be Swift.";
+  }
+  else {
+    result[0] = "Error";
+    result[1] = "There was an error in determining your result.";
   }
 
   return result;
@@ -242,6 +252,7 @@ $(document).ready(function() {
       var values = getRadioValues(3);
       var previousAnswer = $("input[name=question-2]:checked").val();
       updateLanguages(previousAnswer);
+      console.log(previousAnswer);
       var i;
   
       $("#question-3-title").text(question);
@@ -277,6 +288,7 @@ $(document).ready(function() {
       var values = getRadioValues(4);
       var previousAnswer = $("input[name=question-3]:checked").val();
       updateLanguages(previousAnswer);
+      console.log(previousAnswer);
       var i;
   
       $("#question-4-title").text(question);
@@ -312,6 +324,7 @@ $(document).ready(function() {
       var values = getRadioValues(5);
       var previousAnswer = $("input[name=question-4]:checked").val();
       updateLanguages(previousAnswer);
+      console.log(previousAnswer);
       var i;
   
       $("#question-5-title").text(question);
@@ -344,6 +357,7 @@ $(document).ready(function() {
     else {
       var previousAnswer = $("input[name=question-5]:checked").val();
       updateLanguages(previousAnswer);
+      console.log(previousAnswer);
       var result = getResult();
 
       $("#result-language").text(result[0]);
