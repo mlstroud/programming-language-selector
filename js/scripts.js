@@ -54,7 +54,7 @@ function getRadioValues(questionNumber) {
     var values = ["csharp", "jscript", "apps", "all"];
   }
   else if (questionNumber === 2) {
-    var values = ["jscript", "backend", "web", "python"];
+    var values = ["jscript", "backend", "both", "python"];
   }
   else if (questionNumber === 3) {
     var values = ["cplusplus", "normal", "python"];
@@ -93,17 +93,18 @@ function updateLanguages(languageType) {
   else if (languageType === "jscript") {
     languageList[3]++;
   }
-  else if (languageType === "web") {
+  else if (languageType === "both") {
     languageList[3]++;
     languageList[4]++;
+    languageList[5]++;
   }
   else if (languageType === "trendy") {
     languageList[2]++;
-    languageList[4]++;
     languageList[5]++;
   }
   else if (languageType === "easy") {
     languageList[2]++;
+    languageList[4]++;
   }
   else if (languageType === "backend") {
     languageList[0];
