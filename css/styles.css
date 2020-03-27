@@ -31,7 +31,6 @@
 }
 
 .answer-box {
-  
   margin: 0 auto;
 }
 
@@ -45,4 +44,8 @@ ul {
 li {
   padding: 5px;
   text-align: left;
+}
+
+input[type="radio"] {
+  margin-right: 10px;
 }

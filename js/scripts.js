@@ -1,16 +1,28 @@
 // Business Logic
 function getQuestion(questionNumber, questionBranch) {
-  if(questionNumber === 1) {
-    return "What are you wanting to create?";
+  if (questionNumber === 1) {
+    return "What are you wanting to do?";
   }
-  else if(questionNumber ===2) {
+  else if (questionNumber ===2) {
     return "Test Question 2";
+  }
+  else if (questionNumber === 3) {
+    return "Test Question 3";
+  }
+  else if (questionNumber === 4) {
+    return "Test Question 4";
+  }
+  else if (questionNumber === 5) {
+    return "Test Question 5";
+  }
+  else {
+    return "Error: Invalid Question";
   }
 };
 
 function getQuestionAnswers(questionNumber) {
   if (questionNumber === 1){
-    var answers = ["1One", "1Two", "1Three", "1Four"];
+    var answers = ["Make a game", "Create a website", "Make an app", "Analyse data", "Learn programming"];
   }
   else if (questionNumber === 2) {
     var answers = ["2One", "2Two", "2Three", "2Four"];
@@ -24,9 +36,35 @@ function getQuestionAnswers(questionNumber) {
   else if (questionNumber === 5) {
     var answers = ["5One", "5Two", "5Three", "5Four"];
   }
+  else {
+    var answers = null;
+  }
 
   return answers;
 };
+
+function getRadioValues(questionNumber) {
+  if (questionNumber === 1) {
+    var values = ["C#", "JavaScript", "Ruby", "Python", "Python"];
+  }
+  else if (questionNumber === 2) {
+    var values = ["C#", "JavaScript", "Ruby", "Python", "Python"];
+  }
+  else if (questionNumber === 3) {
+    var values = ["C#", "JavaScript", "Ruby", "Python", "Python"];
+  }
+  else if (questionNumber === 4) {
+    var values = ["C#", "JavaScript", "Ruby", "Python", "Python"];
+  }
+  else if (questionNumber === 5) {
+    var values = ["C#", "JavaScript", "Ruby", "Python", "Python"];
+  }
+  else {
+    var values = null;
+  }
+
+  return values;
+}
 
 // User Interface Logic
 $(document).ready(function() {
@@ -36,6 +74,7 @@ $(document).ready(function() {
 
     var question = getQuestion(1, 0);
     var answers = getQuestionAnswers(1);
+    var values = getRadioValues(1);
     var i;
 
     $("#question-1-title").text(question);
@@ -45,7 +84,7 @@ $(document).ready(function() {
         "<div class=\"radio\"" +
           "<label>" +
             "<li>" +
-              "<input type=\"radio\" name=\"question-1\" value=\"test\">" +
+              "<input type=\"radio\" name=\"question-1\" value=\"" + values[i] + "\">" +
               answers[i] + 
             "</li>" +
           "</label>" +
@@ -64,6 +103,7 @@ $(document).ready(function() {
 
     var question = getQuestion(2,0);
     var answers = getQuestionAnswers(2);
+    var values = getRadioValues(2);
     var i;
 
     $("#question-2-title").text(question);
@@ -73,7 +113,7 @@ $(document).ready(function() {
         "<div class=\"radio\"" +
           "<label>" +
             "<li>" +
-              "<input type=\"radio\" name=\"question-2\" value=\"test\">" +
+              "<input type=\"radio\" name=\"question-2\" value=\"" + values[i] + "\">" +
               answers[i] + 
             "</li>" +
           "</label>" +
@@ -88,6 +128,25 @@ $(document).ready(function() {
   });
 
   $("#form-question-2").submit(function(event) {
+
+    var question = getQuestion(3, 0);
+    var answers = getQuestionAnswers(3);
+    var values = getRadioValues(3);
+    var i;
+
+    $("#question-3-title").text(question);
+
+    for(i = 0; i < answers.length; i++) {
+      $("#question-3-list").append(
+        "<div class=\"radio\"" +
+          "<label>" +
+            "<li>" +
+              "<input type=\"radio\" name=\"question-3\" value=\"" + values[i] + "\">" +
+              answers[i] + 
+            "</li>" +
+          "</label>" +
+        "</div>");
+    }
     $("#question-2").fadeOut('slow', function() {
       $("#question-3").fadeIn('slow');
     });
@@ -96,6 +155,25 @@ $(document).ready(function() {
   });
 
   $("#form-question-3").submit(function(event) {
+
+    var question = getQuestion(4, 0);
+    var answers = getQuestionAnswers(4);
+    var values = getRadioValues(4);
+    var i;
+
+    $("#question-4-title").text(question);
+
+    for(i = 0; i < answers.length; i++) {
+      $("#question-4-list").append(
+        "<div class=\"radio\"" +
+          "<label>" +
+            "<li>" +
+              "<input type=\"radio\" name=\"question-4\" value=\"" + values[i] + "\">" +
+              answers[i] + 
+            "</li>" +
+          "</label>" +
+        "</div>");
+    }
     $("#question-3").fadeOut('slow', function() {
       $("#question-4").fadeIn('slow');
     });
@@ -104,6 +182,25 @@ $(document).ready(function() {
   });
 
   $("#form-question-4").submit(function(event) {
+
+    var question = getQuestion(5, 0);
+    var answers = getQuestionAnswers(5);
+    var values = getRadioValues(5);
+    var i;
+
+    $("#question-5-title").text(question);
+
+    for(i = 0; i < answers.length; i++) {
+      $("#question-5-list").append(
+        "<div class=\"radio\"" +
+          "<label>" +
+            "<li>" +
+              "<input type=\"radio\" name=\"question-5\" value=\"" + values[i] + "\">" +
+              answers[i] + 
+            "</li>" +
+          "</label>" +
+        "</div>");
+    }
     $("#question-4").fadeOut('slow', function() {
       $("#question-5").fadeIn('slow');
     });
