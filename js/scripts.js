@@ -11,7 +11,7 @@ function getQuestion(questionNumber) {
     return "Which part of the code will you be working on?";
   }
   else if (questionNumber === 3) {
-    return "";
+    return "How do you feel about syntax?";
   }
   else if (questionNumber === 4) {
     return "Test Question 4";
@@ -32,7 +32,7 @@ function getQuestionAnswers(questionNumber) {
     var answers = ["Front-end.", "Back-end.", "Both.", "I'm not sure."];
   }
   else if (questionNumber === 3) {
-    var answers = ["3One", "3Two", "3Three", "3Four"];
+    var answers = ["I prefer strongly typed and strict syntax.", "Uhh...normal?", "I'd prefer something simple."];
   }
   else if (questionNumber === 4) {
     var answers = ["4One", "4Two", "4Three", "4Four"];
@@ -54,10 +54,10 @@ function getRadioValues(questionNumber) {
     var values = ["csharp", "jscript", "apps", "all"];
   }
   else if (questionNumber === 2) {
-    var values = ["jscript", "web", "python", "python"];
+    var values = ["jscript", "backend", "web", "python"];
   }
   else if (questionNumber === 3) {
-    var values = ["csharp", "jscript", "swift", "cplusplus"];
+    var values = ["cplusplus", "normal", "python"];
   }
   else if (questionNumber === 4) {
     var values = ["csharp", "jscript", "swift", "cplusplus"];
@@ -97,17 +97,29 @@ function updateLanguages(languageType) {
     languageList[3]++;
     languageList[4]++;
   }
+  else if (languageType === "backend") {
+    languageList[0];
+    languageList[2];
+    languageList[3];
+    languageList[4];
+  }
   else if (languageType === "apps") {
     languageList[3]++;
     languageList[4]++;
     languageList[5]++;
   }
-  else if (type === "all") {
+  else if (languageType === "all") {
     var i;
 
     for (i = 0; i < languageList.length; i++) {
       languageList[i]++;
     }
+  }
+  else if (type === "normal") {
+    languageList[0]++;
+    languageList[3]++;
+    languageList[4]++;
+    languageList[5]++;
   }
   else {
 
