@@ -1,5 +1,26 @@
+.body {
+  background-color: #212529;
+}
+
 .jumbotron {
   text-align: center;
+  background: white;
+}
+
+.container {
+  min-height: 100%;
+  width: 75%;
+  padding-bottom: 20px;
+}
+
+
+.panel {
+  background-color: white;
+  padding: 20px;
+}
+
+.panel-heading {
+  padding-bottom: 20px;
 }
 
 .quiz {
@@ -52,4 +73,28 @@ input[type="radio"] {
 
 img {
   width: 100px;
+  margin: 15px;
+}
+
+.language-banner {
+  display: block;
+  padding: 20px;
+}
+
+.footer {
+  text-align: center;
+}
+
+.emphasis {
+  color: skyblue;
+  font-size: 15px;
+}
+
+#footer-image {
+  display: none;
+  text-align: center;
+}
+
+#copyright {
+  padding-top: 10px;
 }

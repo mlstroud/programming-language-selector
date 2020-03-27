@@ -213,6 +213,7 @@ $(document).ready(function() {
 
     $("#question-1-title").text(question);
 
+
     for (i = 0; i < answers.length; i++) {
       $("#question-1-list").append(
         "<div class=\"radio\"" +
@@ -226,6 +227,7 @@ $(document).ready(function() {
     }
 
     $("#start-quiz").fadeOut('slow', function() {
+      $("#footer-image").fadeIn('slow');
       $("#question-1").fadeIn('slow');
     });
 
@@ -398,12 +400,6 @@ $(document).ready(function() {
 
   // Restart the quiz
   $("#form-restart").submit(function(event) {
-
-    $("#form-question-1").reset();
-    $("#form-question-2").reset();
-    $("#form-question-3").reset();
-    $("#form-question-4").reset();
-    $("#form-question-5").reset();
 
     $("#result").fadeOut('slow', function() {
       $("#question-1").fadeIn('slow');
