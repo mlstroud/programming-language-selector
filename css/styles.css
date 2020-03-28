@@ -2,6 +2,13 @@ body {
   background-color: #356AA0;
 }
 
+hr{ 
+  height: 1px;
+  color: ##36393D;
+  background-color: #36393D;
+  border: none;
+}
+
 .jumbotron {
   text-align: center;
   background: #356AA0;
@@ -10,6 +17,10 @@ body {
 }
 .container {
   padding-bottom: 20px;
+}
+
+.content {
+  display: none;
 }
 
 .panel {

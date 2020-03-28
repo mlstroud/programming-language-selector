@@ -210,6 +210,8 @@ function getResult() {
 // User Interface Logic
 $(document).ready(function() {
 
+  $(".content").slideDown('slow', 'linear');
+
   // User Starts Quiz
   $("#start-form").submit(function(event) {
 
