@@ -1,16 +1,24 @@
+body {
+  background-color: #356AA0;
+}
+
 .jumbotron {
   text-align: center;
-  background: white;
+  background: #356AA0;
+  color: white;
+  text-shadow: 2px 2px 1px #212529;
 }
 .container {
-  width: 75%;
   padding-bottom: 20px;
 }
 
 .panel {
-  background-color: white;
+  background-color: #EEEEEE;
   padding-left: 100px;
   padding: 20px;
+  border-style: double;
+  border-color: #36393D;
+  border-width: 3px;
 }
 
 .panel-heading {
@@ -19,6 +27,11 @@
 
 .quiz {
   text-align: center;
+}
+
+.panel-title {
+  font-weight: bold;
+  font-size: 30px;
 }
 
 #question-1 {
@@ -81,10 +94,12 @@ img {
 }
 
 .emphasis {
-  color: skyblue;
-  font-size: 16px;
+  font-weight: bold;
 }
 
+#copyright {
+  color: #EEEEEE;
+}
 #footer-image {
   display: none;
   text-align: center;
